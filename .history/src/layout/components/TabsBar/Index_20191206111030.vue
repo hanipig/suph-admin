@@ -9,7 +9,7 @@
     <div class="tabs-outer" ref="scrollOuter" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
       <ul class="tabs-inner" ref="scrollBody" :style="{left: tagBodyLeft + 'px'}">
         <transition-group enter-active-class="animated bounceIn" leave-active-class="animated fadeOut">
-          <li v-for="item in tagNavList" :key="item.name" @click="handleSelect(item)" ref="tagEle" :data-router="JSON.stringify(item)" @contextmenu.prevent="contextMenu(item.name, $event)">
+          <li v-for="item in tagNavList" :key="item.name" @click="handleSelect(item)" ref="tagEle" :data-router="JSON.stringify(item)" @contextmenu="contextMenu(item.name, $event)">
             <i :class="isCurrentTag(item) ? 'circle active' : 'circle'"></i>
             <span>{{item.meta.title}}</span>
             <a-icon type="close" class="close" v-show="item.name!== 'home'" @click.stop="handleClose(item)" />
@@ -113,6 +113,7 @@ export default {
     },
     // 右键菜单
     contextMenu (name, e) {
+      console.log(name)
       if (name === 'home') {
         return
       }

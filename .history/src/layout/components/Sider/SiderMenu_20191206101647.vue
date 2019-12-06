@@ -27,7 +27,6 @@ export default {
     return {
       openKeys: ['home'],
       selectedKeys: ['home'],
-      cachedOpenKeys: [],
       activeMenu: 'home'
     }
   },
@@ -64,7 +63,6 @@ export default {
       routes.forEach((item) => {
         openKeys.push(item.name)
       })
-      // 确保在折叠的状态下 选中tag标签 侧边栏不会突兀的弹出
       this.collapsed ? this.cachedOpenKeys = openKeys : this.openKeys = openKeys
       // this.openKeys = openKeys
     }

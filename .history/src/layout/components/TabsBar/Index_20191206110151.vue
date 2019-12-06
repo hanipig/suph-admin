@@ -9,7 +9,7 @@
     <div class="tabs-outer" ref="scrollOuter" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
       <ul class="tabs-inner" ref="scrollBody" :style="{left: tagBodyLeft + 'px'}">
         <transition-group enter-active-class="animated bounceIn" leave-active-class="animated fadeOut">
-          <li v-for="item in tagNavList" :key="item.name" @click="handleSelect(item)" ref="tagEle" :data-router="JSON.stringify(item)" @contextmenu.prevent="contextMenu(item.name, $event)">
+          <li v-for="item in tagNavList" :key="item.name" @click="handleSelect(item)" ref="tagEle" :data-router="JSON.stringify(item)">
             <i :class="isCurrentTag(item) ? 'circle active' : 'circle'"></i>
             <span>{{item.meta.title}}</span>
             <a-icon type="close" class="close" v-show="item.name!== 'home'" @click.stop="handleClose(item)" />
@@ -111,16 +111,6 @@ export default {
         }
       }
     },
-    // 右键菜单
-    contextMenu (name, e) {
-      if (name === 'home') {
-        return
-      }
-      this.visible = true
-      const offsetLeft = this.$el.getBoundingClientRect().left
-      this.contextMenuLeft = e.clientX - offsetLeft + 10
-      this.contextMenuTop = e.clientY - 64
-    },
     // 关闭邮件菜单
     closeMenu () {
       this.visible = false
@@ -188,10 +178,14 @@ export default {
       margin: 0;
       padding: 1px 4px;
       box-sizing: border-box;
+      // display: flex;
+      // align-items: center;
       position: relative;
       white-space: nowrap;
       li {
         display: inline-block;
+        // display: flex;
+        // align-items: center;
         height: 29px;
         line-height: 28px;
         margin: 0 6px;
@@ -200,7 +194,6 @@ export default {
         border: 1px solid #e8eaec;
         color: #515a6e;
         position: relative;
-        cursor: pointer;
         .circle {
           position: absolute;
           top: 8px;
@@ -224,24 +217,6 @@ export default {
             color: #1890ff;
           }
         }
-      }
-    }
-  }
-  .contextmenu {
-    position: absolute;
-    margin: 0;
-    padding: 5px 0;
-    background: #fff;
-    z-index: 1000;
-    list-style-type: none;
-    border-radius: 4px;
-    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.1);
-    li {
-      margin: 0;
-      padding: 5px 15px;
-      cursor: pointer;
-      &:hover {
-        background: #eee;
       }
     }
   }

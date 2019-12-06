@@ -113,6 +113,7 @@ export default {
     },
     // 右键菜单
     contextMenu (name, e) {
+      console.log(name)
       if (name === 'home') {
         return
       }
