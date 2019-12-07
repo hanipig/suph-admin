@@ -86,6 +86,7 @@ export default {
       tagList.forEach((item, index) => {
         if (routeEqual(this.$route, JSON.parse(item.dataset.router))) {
           let tag = this.$refs.tagEle[index]
+          console.log(tag)
           this.moveToView(tag)
         }
       })

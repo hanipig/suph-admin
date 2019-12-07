@@ -102,6 +102,7 @@ export default {
       if (bodyWidth < outerWidth) {// 标签可视区域内
         this.tagBodyLeft = 0
       } else {
+        console.log('in')
         if (tag.offsetLeft < -this.tagBodyLeft) { //标签在可视区左
           this.tagBodyLeft = -tag.offsetLeft
         } else if (tag.offsetLeft > -this.tagBodyLeft + outerWidth) {// 标签在可视区域右侧

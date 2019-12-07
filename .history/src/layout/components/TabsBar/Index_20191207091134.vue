@@ -99,6 +99,7 @@ export default {
     moveToView (tag) {
       let outerWidth = this.getOuterWidth() //需要通过另一个methods才能保证刷新之后获取到的宽度是正确的
       let bodyWidth = this.$refs.scrollBody.offsetWidth
+      console.log(outerWidth, bodyWidth)
       if (bodyWidth < outerWidth) {// 标签可视区域内
         this.tagBodyLeft = 0
       } else {

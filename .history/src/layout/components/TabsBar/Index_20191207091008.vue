@@ -82,6 +82,7 @@ export default {
     },
     // 根据当前路由对象获取当前选中的tag元素 === 确保选中的的tag标签在可是区域
     getTagEleByRoute () {
+      console.log('active')
       let tagList = this.$refs.tagEle // 所有tag标签
       tagList.forEach((item, index) => {
         if (routeEqual(this.$route, JSON.parse(item.dataset.router))) {
