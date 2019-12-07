@@ -4,22 +4,22 @@ import routes from './routers'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-NProgress.inc(0.2)
-NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
+NProgress.set(0.4);
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 
 router.beforeEach((to, from, next) => {
-  NProgress.start() // 进度条开启
+  NProgress.start()
   next()
 })
 
 router.afterEach(() => {
-  NProgress.done() // 进度条关闭
+  NProgress.done()
 })
 export default router

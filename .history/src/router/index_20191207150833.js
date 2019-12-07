@@ -11,15 +11,16 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 
 router.beforeEach((to, from, next) => {
-  NProgress.start() // 进度条开启
+  NProgress.start()
   next()
 })
 
 router.afterEach(() => {
-  NProgress.done() // 进度条关闭
+  NProgress.done()
 })
 export default router

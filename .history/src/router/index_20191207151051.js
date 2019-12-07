@@ -15,11 +15,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  NProgress.start() // 进度条开启
+  NProgress.start()
   next()
 })
 
 router.afterEach(() => {
-  NProgress.done() // 进度条关闭
+  NProgress.done()
 })
 export default router
